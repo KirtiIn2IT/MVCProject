@@ -22,7 +22,16 @@ pipeline {
     }
     stage('Frontend') {
       steps {
-        bat 'echo Frontend'
+        parallel(
+          "Frontend": {
+            bat 'echo Frontend'
+            
+          },
+          "More Test": {
+            bat 'echo More Test'
+            
+          }
+        )
       }
     }
     stage('Static Analysis') {
